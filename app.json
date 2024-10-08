@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "education-app",
-    "slug": "education-app",
+    "name": "safe-swim-app",
+    "slug": "safe-swim-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
