@@ -5,6 +5,7 @@ import LoginScreen from './screens/LoginScreen';
 import TabNavigator from './navigations/TabNavigator';
 import { useFonts } from 'expo-font';
 
+
 const index = () => {
   const [loaded, error] = useFonts({
     'poppins': require('../assets/fonts/Poppins-Regular.ttf'),

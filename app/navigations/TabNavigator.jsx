@@ -14,31 +14,32 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator screenOptions={{
         headerShown:false,
-        tabBarActiveTintColor:Colors.PRIMARY
+        tabBarActiveTintColor:Colors.PRIMARY,
+        tabBarLabelStyle: { display: 'none' }
     }}>
       <Tab.Screen name="Home" component={HomeScreen} options={{
         tabBarIcon:({color, size})=>(
             <Ionicons name="home" size={24} color={color} />
         ),
-        tabBarLabel:({color})=>(
-            <Text style={{color:color, fontFamily:'poppins', fontSize:13}}>Home</Text>
-        )
+        // tabBarLabel:({color})=>(
+        //     <Text style={{color:color, fontFamily:'poppins', fontSize:13}}>Home</Text>
+        // )
       }}/>
       <Tab.Screen name="Contact" component={ContactScreen} options={{
         tabBarIcon:({color, size})=>(
-            <Feather name="phone-call" size={24} color={color}/>
+            <Feather name="phone-call" size={20} color={color}/>
         ),
-        tabBarLabel:({color})=>(
-            <Text style={{color:color, fontFamily:'poppins', fontSize:13}}>Contact</Text>
-        )
+        // tabBarLabel:({color})=>(
+        //     <Text style={{color:color, fontFamily:'poppins', fontSize:13}}>Contact</Text>
+        // )
       }}/>
       <Tab.Screen name="Settings" component={SettingsScreen} options={{
         tabBarIcon:({color, size})=>(
-            <Ionicons name="reorder-three" size={30} color={color} />
+            <Ionicons name="reorder-three" size={35} color={color} />
         ),
-        tabBarLabel:({color})=>(
-            <Text style={{color:color, fontFamily:'poppins', fontSize:13}}>Settings</Text>
-        )
+        // tabBarLabel:({color})=>(
+        //     <Text style={{color:color, fontFamily:'poppins', fontSize:13}}>Settings</Text>
+        // )
       }}/>
     </Tab.Navigator>
   )
