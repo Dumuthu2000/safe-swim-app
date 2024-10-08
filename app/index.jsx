@@ -13,6 +13,8 @@ const index = () => {
     'poppins-bold': require('../assets/fonts/Poppins-Bold.ttf'),
     'poppins-semiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
     'poppins-black': require('../assets/fonts/Poppins-Black.ttf'),
+    'qwigley': require('../assets/fonts/Qwigley-Regular.ttf'),
+    'blackHanSans': require('../assets/fonts/BlackHanSans-Regular.ttf'),
   });
   return (
     <NavigationContainer independent={true}>
