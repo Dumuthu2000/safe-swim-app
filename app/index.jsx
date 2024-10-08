@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from './screens/LoginScreen';
 import TabNavigator from './navigations/TabNavigator';
 import { useFonts } from 'expo-font';
+import SplashScreen from './screens/SplashScreen';
 
 
 const index = () => {
@@ -16,10 +17,27 @@ const index = () => {
     'qwigley': require('../assets/fonts/Qwigley-Regular.ttf'),
     'blackHanSans': require('../assets/fonts/BlackHanSans-Regular.ttf'),
   });
+
+  const[isLoading, setIsLoading] = useState(true);
+
+  useEffect(()=>{
+    if(isLoading){
+      setTimeout(()=>{
+        setIsLoading(false);
+      }, 2400)
+    }
+  }, [isLoading]);
+
+  if(isLoading){
+    return(
+      <SplashScreen/>
+    )
+  }
   return (
     <NavigationContainer independent={true}>
       <TabNavigator/>
       {/* <LoginScreen/> */}
+      {/* <SplashScreen/> */}
     </NavigationContainer>
   )
 }
