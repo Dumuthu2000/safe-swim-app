@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from './screens/LoginScreen';
 import TabNavigator from './navigations/TabNavigator';
 import { useFonts } from 'expo-font';
 import SplashScreen from './screens/SplashScreen';
+import { client } from '../config/KindeConfig';
 
+export const AuthContext = createContext();
 
 const index = () => {
   const [loaded, error] = useFonts({
@@ -19,14 +21,27 @@ const index = () => {
   });
 
   const[isLoading, setIsLoading] = useState(true);
+  const[auth, setAuth] = useState(false);
+
+  const checkAuthenticate = async () => {
+    if (await client.isAuthenticated()) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+  };
 
   useEffect(()=>{
     if(isLoading){
       setTimeout(()=>{
         setIsLoading(false);
-      }, 2400)
+      }, 4000)
     }
   }, [isLoading]);
+
+  useEffect(()=>{
+    checkAuthenticate();
+  },[auth])
 
   if(isLoading){
     return(
@@ -34,11 +49,13 @@ const index = () => {
     )
   }
   return (
-    <NavigationContainer independent={true}>
-      <TabNavigator/>
-      {/* <LoginScreen/> */}
-      {/* <SplashScreen/> */}
-    </NavigationContainer>
+    <AuthContext.Provider value={{auth, setAuth}}>
+      <NavigationContainer independent={true}>
+      {auth?
+        <TabNavigator/> : <LoginScreen/>
+      }
+      </NavigationContainer>
+    </AuthContext.Provider>
   )
 }
 
